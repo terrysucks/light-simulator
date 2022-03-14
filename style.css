@@ -1,0 +1,9 @@
+#planepanel {
+    border: solid black thin;
+}
+polygon {
+  stroke: black;
+}
+.scaled{
+	transform: scale(1, 1);
+}
