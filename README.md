@@ -1,2 +1,2 @@
 # light-simulator
- place lights :)
+place lights and walls, drag and drop, currently in progress
