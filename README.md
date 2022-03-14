@@ -1,2 +1,2 @@
-# lights
+# light-simulator
  place lights :)
