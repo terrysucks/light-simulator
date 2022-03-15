@@ -23,14 +23,20 @@ function createPlane() {
                 for (const ray of bulb.rays) {
 
                     let p = {
-                        x: bulb.x,
-                        y: bulb.y,
+                        x: ray.x1 + bulb.getX(),
+                        y: ray.y1 + bulb.getY(),
                         T: 999999 // arbitrary
                     }
 
                     // get closest intersection point
+                    let r = {
+                        x1: ray.x1 + bulb.getX(),
+                        y1: ray.y1 + bulb.getY(),
+                        x2: ray.x2 + bulb.getX(),
+                        y2: ray.y2 + bulb.getY()
+                    }
                     for (const wall of walls) {
-                        let p1 = getIntersection(ray, wall)
+                        let p1 = getIntersection(r, wall)
                         if (p1)
                             if (p1.T < p.T)
                                 p = p1
@@ -39,8 +45,8 @@ function createPlane() {
                     // draw a ray
                     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line')
                     const panel = document.getElementById('planepanel')
-                    line.setAttribute('x1', bulb.x)
-                    line.setAttribute('y1', bulb.y)
+                    line.setAttribute('x1', ray.x1 + bulb.getX())
+                    line.setAttribute('y1', ray.y1 + bulb.getY())
                     line.setAttribute('x2', p.x)
                     line.setAttribute('y2', p.y)
 
