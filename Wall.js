@@ -3,7 +3,7 @@
 // a wall blocks light
 
 function createWall(a, b, c, d) {
-    let color = 'black'
+    let color = 'white'
 
     return {
 
@@ -20,7 +20,7 @@ function createWall(a, b, c, d) {
             wall.setAttribute('x2', c)
             wall.setAttribute('y2', d)
 
-            wall.setAttribute('stroke-width', 2)
+            wall.setAttribute('stroke-width', 1.5)
             wall.setAttribute('stroke', color)
             panel.appendChild(wall)
         }

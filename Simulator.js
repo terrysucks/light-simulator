@@ -25,6 +25,17 @@ document.addEventListener('DOMContentLoaded', function () {
     walls.push(createWall(622, 122, 552, 253))
     walls.push(createWall(662, 122, 532, 353))
     walls.push(createWall(322, 322, 372, 353))
+    //walls.push(createWall(800, 100, 800, 300))
+    //walls.push(createWall(800, 333, 800, 490))
+
+    // polygons
+    walls.push(createWall(50, 50, 50, 150))
+    walls.push(createWall(50, 150, 150, 150))
+    walls.push(createWall(150, 150, 50, 50))
+
+    // mirrors
+    walls.push(createMirror(730, 60, 730, 450, 1))
+    walls.push(createMirror(830, 60, 830, 450, 2))
 
     for (const w of walls)
         plane.addWall(w)

@@ -1,6 +1,6 @@
 'use strict'
 
-// plane handles all objects
+// plane handles all objects at play
 
 function createPlane() {
     let bulbs = []
@@ -27,6 +27,7 @@ function createPlane() {
                         y: ray.y1 + bulb.getY(),
                         T: 999999 // arbitrary
                     }
+                    let w = {}
 
                     // get closest intersection point
                     let r = {
@@ -38,8 +39,10 @@ function createPlane() {
                     for (const wall of walls) {
                         let p1 = getIntersection(r, wall)
                         if (p1)
-                            if (p1.T < p.T)
+                            if (p1.T < p.T) {
                                 p = p1
+                                w = wall
+                            }
                     }
 
                     // draw a ray
@@ -51,8 +54,13 @@ function createPlane() {
                     line.setAttribute('y2', p.y)
 
                     line.setAttribute('stroke-width', 1)
-                    line.setAttribute('stroke', 'red')
+                    line.setAttribute('stroke', 'yellow')
                     panel.appendChild(line)
+
+                    // check for mirror
+                    if(w.reflector == true){
+                        w.drawRay(ray.x1 + bulb.getX(), ray.y1 + bulb.getY(), p.x, p.y, walls)
+                    }
                 }
             }
 
