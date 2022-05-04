@@ -1,7 +1,5 @@
 'use strict'
 
-// a wall blocks light
-
 function createMirror(a, b, c, d, i) {
     let wall = createWall(a, b, c, d)
     let Ocolor = 'silver'
@@ -31,6 +29,8 @@ function createMirror(a, b, c, d, i) {
         wallInner.setAttribute('stroke', Icolor)
         panel.appendChild(wallInner)
     }
+
+    // draw a ray bouncing off of the mirror
     wall.drawRay = (x1, y1, x2, y2, walls) => {
         // draw another ray
         const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line')
@@ -71,7 +71,6 @@ function createMirror(a, b, c, d, i) {
                 if (wall.id == i)    // dont intersect with self
                     continue
 
-
             let p1 = getIntersection(r, wall)
             if (p1)
                 if (p1.T < p.T) {
@@ -79,12 +78,23 @@ function createMirror(a, b, c, d, i) {
                     w = wall
                 }
         }
+
+        // if incoming and outgoing rays are parallel, no need to draw
+        // for normalized vectors, dot product = -1 means perfect reflection
+        let dp = dotProduct(x1, y1, x2, y2, x2, y2, p.x, p.y)
+        console.log(dp)
+        let e = 0.000000001
+        if(-1 - e < dp
+        && dp < -1 + e)
+            return;
+
         line1.setAttribute('x1', x2)
         line1.setAttribute('y1', y2)
         line1.setAttribute('x2', p.x)
         line1.setAttribute('y2', p.y)
         line1.setAttribute('stroke-width', 1)
         line1.setAttribute('stroke', 'yellow')
+
         panel.appendChild(line1)
 
         if(w.reflector)

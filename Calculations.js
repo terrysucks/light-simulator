@@ -45,3 +45,23 @@ function getIntersection(ray, segment) {
     };
 
 }
+
+function dotProduct(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2){
+    let a = normalize(ax1, ay1, ax2, ay2)
+    let b = normalize(bx1, by1, bx2, by2)
+    return (a.x2*b.x2 + a.y2*b.y2)
+}
+
+function normalize(x1, y1, x2, y2){
+    let x = x2 - x1
+    let y = y2 - y1
+    let magnitude = Math.sqrt(x*x + y*y)
+    x /= magnitude
+    y /= magnitude
+    return {
+        x1: 0,
+        y1: 0,
+        x2: x,
+        y2: y
+    }
+}
