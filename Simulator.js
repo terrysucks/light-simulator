@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
     walls.push(createWall(340, 400, 444, 240))
     walls.push(createWall(123, 312, 122, 212))
     walls.push(createWall(422, 22, 232, 153))
-    walls.push(createWall(622, 122, 552, 253))
-    walls.push(createWall(662, 122, 532, 353))
     walls.push(createWall(322, 322, 372, 353))
-    //walls.push(createWall(800, 100, 800, 300))
-    //walls.push(createWall(800, 333, 800, 490))
+    
+    // tube facing mirror
+    walls.push(createWall(652, 352, 502, 453))
+    walls.push(createWall(652, 382, 502, 503))
 
     // polygons
     walls.push(createWall(50, 50, 50, 150))
